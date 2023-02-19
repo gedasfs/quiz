@@ -8,26 +8,22 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('correct_multiples', function (Blueprint $table) {
+        Schema::create('answer_multiples', function (Blueprint $table) {
             $table->id();
             $table->foreignId('question_multiples_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('answer_multiples_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('answer');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('correct_multiples');
+        Schema::dropIfExists('answer_multiples');
     }
 };

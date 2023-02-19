@@ -8,25 +8,22 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('question_multiples', function (Blueprint $table) {
+        Schema::create('tests_questions', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
+            $table->foreignId('test_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->morphs('questionable');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('question_multiples');
+        Schema::dropIfExists('tests_questions');
     }
 };

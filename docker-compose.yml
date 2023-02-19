@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   nginx:
-    container_name: quiz-nginx
+    container_name: quiz-l10-nginx
     build: ./docker/nginx
     working_dir: /var/www
     volumes:
@@ -14,7 +14,7 @@ services:
       - php
 
   php:
-    container_name: quiz-php
+    container_name: quiz-l10-php
     build: ./docker/php/
     working_dir: /var/www
     volumes:
@@ -25,7 +25,7 @@ services:
       - mariadb
 
   mariadb:
-    container_name: quiz-mariadb
+    container_name: quiz-l10-mariadb
     build: ./docker/mysql
     volumes:
         - ./docker/mysql/data/mariadb:/var/lib/mysql
@@ -35,7 +35,7 @@ services:
         - ./.env
   
   mailhog:
-    container_name: quiz-mailhog
+    container_name: quiz-l10-mailhog
     build: ./docker/mailhog 
     ports:
         - 8025:8025
